@@ -2,23 +2,34 @@ name: Deploy
 
 on:
   workflow_call:
-
+    inputs:
+      repository:
+        required: true
+        type: string
+    secrets:
+      server_host:
+        required: true
+        type: string
+      server_key:
+        required: true
+        type: string
 jobs:
-  deploy:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x, 16.x]
-        os: ["ubuntu-latest", "windows-latest", "macOS-latest"]
-
-    needs: build
+  main:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
-        uses: actions/setup-node@v2
+      - name: Connect to online machine with SSH
+      - uses: JimCronqvist/action-ssh@0.1.1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Instal dependencies
-        run: npm install
+          hosts: ${{ secrets.server_host }}
+          privateKey: ${{ secrets.server_key }}
+
+      - name: Update the online machine with SSH
+      - uses: JimCronqvist/action-ssh@0.1.1
+        with:
+          command: |
+            cd ${{ inputs.repository }}/
+            git pull 
+            sudo pm2 restart all
+          hosts: ${{ secrets.server_host }}
+          privateKey: ${{ secrets.server_key }}
