@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Connect to online machine with SSH
-      - uses: JimCronqvist/action-ssh@0.1.1
+        uses: JimCronqvist/action-ssh@0.1.1
         with:
           hosts: ${{ secrets.server_host }}
           privateKey: ${{ secrets.server_key }}
 
       - name: Update the online machine with SSH
-      - uses: JimCronqvist/action-ssh@0.1.1
+        uses: JimCronqvist/action-ssh@0.1.1
         with:
           command: |
             cd ${{ inputs.repository }}/
