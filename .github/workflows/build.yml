@@ -1,0 +1,6 @@
+name: Build
+
+on:
+  workflow_call:
+
+jobs:
