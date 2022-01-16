@@ -9,10 +9,8 @@ on:
     secrets:
       server_host:
         required: true
-        type: string
       server_key:
         required: true
-        type: string
 jobs:
   main:
     runs-on: ubuntu-latest
