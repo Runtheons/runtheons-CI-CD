@@ -28,6 +28,9 @@ jobs:
           command: |
             cd ${{ inputs.repository }}/
             git pull 
+            npm install
+            npm run test --if-present
+            npm run build --if-present
             sudo pm2 restart all
           hosts: ${{ secrets.server_host }}
           privateKey: ${{ secrets.server_key }}
