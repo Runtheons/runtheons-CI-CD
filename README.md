@@ -6,9 +6,9 @@ For implement Continuous Integration - Continuous Deployment we use Github Actio
 
 This project use:
 
-- [Test](https://github.com/Zexal0807/runtheons-CI-CD#test)
-- [Build](https://github.com/Zexal0807/runtheons-CI-CD#build)
-- [Deploy](https://github.com/Zexal0807/runtheons-CI-CD#deploy)
+- [Test](https://github.com/Runtheons/runtheons-CI-CD#test)
+- [Build](https://github.com/Runtheons/runtheons-CI-CD#build)
+- [Deploy](https://github.com/Runtheons/runtheons-CI-CD#deploy)
 
 ## Test
 
@@ -28,7 +28,7 @@ npm run test
 .
 jobs:
   test:
-    uses: Zexal0807/runtheons-CI-CD/.github/workflows/test.yml@v1.0
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/test.yml@v1.1
 ```
 
 ## Build
@@ -49,7 +49,7 @@ npm run build
 .
 jobs:
   build:
-    uses: Zexal0807/runtheons-CI-CD/.github/workflows/build.yml@v1.0
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/build.yml@v1.1
 ```
 
 ## Deploy
@@ -75,7 +75,7 @@ sudo pm2 restart all
 .
 jobs:
   deploy:
-    uses: Zexal0807/runtheons-CI-CD/.github/workflows/deploy.yml@v1.0
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/deploy.yml@v1.1
     with:
       repository: ${{ repository }}
     secrets:
