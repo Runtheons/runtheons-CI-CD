@@ -63,8 +63,6 @@ ssh -i ${{ secrets.SERVER_KEY }} ${{ secrets.SERVER_HOST }}
 cd ${{ repository }}/
 git pull
 npm install
-npm run test --if-present
-npm run build --if-present
 sudo pm2 restart all
 ```
 

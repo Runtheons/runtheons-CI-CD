@@ -12,6 +12,16 @@ on:
       server_key:
         required: true
 jobs:
+  testConnection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test connection to online machine with SSH
+        uses: JimCronqvist/action-ssh@0.1.1
+        with:
+          hosts: ${{ secrets.server_host }}
+          privateKey: ${{ secrets.server_key }}
+
   main:
     runs-on: ubuntu-latest
 
@@ -29,8 +39,6 @@ jobs:
             cd ${{ inputs.repository }}/
             git pull 
             npm install --save --legacy-peer-deps
-            npm run test --if-present
-            npm run build --if-present
             sudo pm2 restart all
           hosts: ${{ secrets.server_host }}
           privateKey: ${{ secrets.server_key }}
