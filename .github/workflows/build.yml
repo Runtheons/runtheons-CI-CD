@@ -5,19 +5,14 @@ on:
 
 jobs:
   main:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x, 16.x]
-        os: ["ubuntu-latest", "windows-latest", "macOS-latest"]
+    runs-on: "ubuntu-latest"
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      - name: Setup Node.js 14.x on "ubuntu-latest"
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14.x
       - name: Instal dependencies
         run: npm install --save --legacy-peer-deps
       - name: Create a build

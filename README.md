@@ -28,7 +28,7 @@ npm run test
 .
 jobs:
   test:
-    uses: Runtheons/runtheons-CI-CD/.github/workflows/test.yml@v1.1
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/test.yml@v1.3
 ```
 
 ## Build
@@ -49,7 +49,7 @@ npm run build
 .
 jobs:
   build:
-    uses: Runtheons/runtheons-CI-CD/.github/workflows/build.yml@v1.1
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/build.yml@v1.3
 ```
 
 ## Deploy
@@ -73,7 +73,7 @@ sudo pm2 restart all
 .
 jobs:
   deploy:
-    uses: Runtheons/runtheons-CI-CD/.github/workflows/deploy.yml@v1.1
+    uses: Runtheons/runtheons-CI-CD/.github/workflows/deploy.yml@v1.3
     with:
       repository: ${{ repository }}
     secrets:
